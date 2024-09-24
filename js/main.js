@@ -514,3 +514,37 @@ window.addEventListener('load', function() {
 	}, 4000); 
   });
 
+
+  //about
+  document.addEventListener("DOMContentLoaded", function() {
+    const aboutSection = document.querySelector("#about-section");
+
+    function onScroll() {
+        const sectionPos = aboutSection.getBoundingClientRect().top;
+        const screenPos = window.innerHeight / 1.2; // Trigger when it's in view
+        
+        if (sectionPos < screenPos) {
+            aboutSection.classList.add("show");
+        }
+    }
+
+    window.addEventListener("scroll", onScroll);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+	 const glightbox = GLightbox({
+		selector: ".glightbox",
+	 });
+});
+	
+window.addEventListener('load', function() {
+	setTimeout(function() {
+	  const loadingOverlay = document.querySelector('.loading-overlay');
+	  loadingOverlay.style.display = 'none';
+	  
+	  // Add the visible class to the home section after the preloader
+	  const homeSection = document.getElementById('home-section');
+	  homeSection.classList.add('visible');
+	}, 4000); 
+  });
+

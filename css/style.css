@@ -114,7 +114,8 @@ blockquote {
 
 b,
 strong {
-  font-weight: bolder; }
+  font-weight: bolder; 
+}
 
 small {
   font-size: 80%; }
@@ -8785,6 +8786,7 @@ h1, h2, h3, h4, h5,
   .ftco-about .img-about .img {
     display: block;
     width: 100%;
+    mask-image: linear-gradient(to bottom, #050526, 80%, transparent 100% );
     position: relative;
     z-index: 1;
     -webkit-box-shadow: -20px 20px 69px -27px rgba(0, 0, 0, 0.33);
@@ -9021,8 +9023,8 @@ textarea.form-control {
 
 .ftco-footer {
   font-size: 16px;
-  background: #232931;
-  padding: 1em 0;
+  background: #f4d9d0;
+  padding: .5em 0;
   z-index: 0; }
   .ftco-footer .ftco-footer-logo {
     text-transform: uppercase;
@@ -9859,7 +9861,7 @@ textarea.form-control {
 
 .ed__date{
   display: block;
-  font-size: 15px;
+  font-size: 16px;
   margin-bottom: .75rem;
   color: #f4d9d0;
   font-family: 'Poppins', Arial, sans-serif;
@@ -9871,7 +9873,7 @@ textarea.form-control {
 
 .ed__high b{
   color: #d9abab;
-  font-size: 19px;
+  font-size: 22px;
 }
 
 .about__title {
@@ -9890,22 +9892,6 @@ textarea.form-control {
   font-weight: 400 !important;
 }
 
-/* Enhanced subtle fade effect at the bottom of the image */
-#about-section .img-about {
-  position: relative;
-  overflow: hidden;
-}
-
-#about-section .img-about::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 40%; /* Slightly increased height for the fade area */
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 80%, rgba(0, 0, 0, 0.4) 100%); /* Enhanced gradient effect */
-  z-index: 1;
-}
 
 /* Education Section */
 .edu {
@@ -9961,7 +9947,6 @@ textarea.form-control {
   justify-content: center;
 }
 
-
 .ball {
   position: relative;
   bottom: 50px;
@@ -10012,3 +9997,57 @@ textarea.form-control {
     transform: rotate(0deg);
   }
 }
+
+#home-section {
+  opacity: 0; /* Initially hidden */
+  transition: opacity 1s ease-in; /* Smooth transition */
+}
+
+#home-section.visible {
+  opacity: 1; /* Visible state */
+}
+
+
+.custom-footer p {
+  color: #921a40; /* Change this to your preferred color */
+  font-size: 15px; /* Optional: Adjust the font size */
+}
+
+/* Initial state: hidden and translated down */
+.ftco-about {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* When scrolled into view: visible and at normal position */
+.ftco-about.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Portfolio content - Ensures that child elements don’t overflow the image */
+.portfolio .portfolio-content {
+  position: relative;
+  overflow: hidden; /* Hide anything beyond the image bounds */
+  z-index: 1; /* Keeps the content layer within the bounds */
+}
+
+/* Portfolio info overlay - Appears only when hovering */
+.portfolio .portfolio-info {
+  opacity: 0;
+  position: absolute;
+  inset: 0; /* Ensures the overlay stays within the image */
+  z-index: 2; /* Higher than the image but lower than the menu */
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Only show the overlay when hovering on the portfolio content */
+.portfolio .portfolio-content:hover .portfolio-info {
+  opacity: 1;
+  z-index: 2;
+}
+
+
